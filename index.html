@@ -4,20 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
     <title>Namaste react</title>
 </head>
 <body>
     <div id="root">
-        <h1>Hello world from html </h1>
     </div>
    
 </body>
-<script>
-    
-const heading = document.createElement("h1");
-heading.innerHTML="Hello world from JS!"
-const root = document.getElementById("root");
-root.appendChild(heading);
 
-</script>
+<!-- 
+A content delivery network (CDN) is a geographically distributed group of servers that 
+caches content close to end users. A CDN allows for the quick transfer of assets needed for loading Internet content,
+including HTML pages, JavaScript files, stylesheets, images, and videos.
+    
+The crossorigin attribute sets the mode of the request to an HTTP CORS Request.
+
+Web pages often make requests to load resources on other servers. Here is where CORS comes in.
+
+A cross-origin request is a request for a resource (e.g. style sheets, iframes, images, fonts, or scripts) from another domain.
+
+CORS is used to manage cross-origin requests.
+
+CORS stands for Cross-Origin Resource Sharing, and is a mechanism that allows resources on a web page to be requested from another domain outside their own domain.
+
+ -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="./App.js"></script>
 </html>
