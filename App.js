@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 //Creating a element using React with attribute of id-heading with applies color to it
 const heading = React.createElement("h1",{id:"heading",xyz:"abc"},"Hello from React");
 
