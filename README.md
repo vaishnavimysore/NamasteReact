@@ -55,3 +55,16 @@ What is the dist folder?
 dist folder contains all the dev build files mainly the HTML,CSS and JS files after optimization and compression that would be need to put our content on the web.
 
 What is "browserslist"?
+Browserslist is a tool that allows specifying which browsers should be supported in your frontend app by specifying "queries" in a config file. It's used by frameworks/libraries such as React, Angular and Vue, but it's not limited to them.
+As javascript evolves, browsers won't support new features at the same pace, for instance not all browsers have built-in support for ES6 (aka ES2015). By using browserslist, transpilers/bundlers know what browsers you want to support, so they can "group" browsers in different categories and generate separate bundles
+https://stackoverflow.com/questions/55510405/what-is-the-significance-of-browserslist-in-package-json-created-by-create-react
+
+What is the difference between Caret^ and Tilda~ in package.json?
+~version: “Approximately equivalent to version”, will update you to all future "patch versions", without incrementing the minor version. ~1.2.3 will use releases from 1.2.3 to <1.3.0.
+
+^version: “Compatible with version”, will update you to all future "minor and patch versions", without incrementing the major version. ^1.2.3 will use releases from 1.2.3 to <2.0.0.
+https://stackoverflow.com/questions/22343224/whats-the-difference-between-tilde-and-caret-in-package-json
+
+Read about Script types in HTML
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+
