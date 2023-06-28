@@ -115,7 +115,19 @@ text/javascript : It is the basic standard of writing javascript code inside the
 - text/babel : This value indicates that the script is a babel type and required bable to transpile it.
 - text/typescript: As the name suggest the script is written in TypeScript.
 
+`{TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>}` in JSX.
 
+- `{TitleComponent}`- Its the JSX variable being used in a JS code. This value describes the TitleComponent as a javascript expression or a variable. The {} can embed a javascript expression or a variable inside it.
+- `<TitleComponent/>` - This value describes TitleComponent as a JSX fucntional component being used in a JS code with {}. It returns a JSX value. A JSX functional component is just like a normal JS function which returns a JSX value. Always starts with capital letter. It is used with < />.
+- `<TitleComponent></TitleComponent>` - This value is exactly same as the above JSX functional component only when {<TitleComponent/>} has no child components. The opening and closing tags are created to include the child components.
+
+```
+<TitleComponent>
+    <FirstChildComponent />
+    <SecondChildComponent />
+    <ThirdChildComponent />
+  </TitleComponent>
+```
 
 
 
