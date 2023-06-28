@@ -68,3 +68,34 @@ https://stackoverflow.com/questions/22343224/whats-the-difference-between-tilde-
 Read about Script types in HTML
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
 
+What is JSX?
+JSX is Java Script syntax to create React elements with easy and in minimal steps. It is not part of React. React and JSX are different. We can build our apps using pure React as well but its quite complicated to understand and lengthy to create an element. 
+JSX is using HTML and JS together in .js file to create REACT elements. JSX and HTML are purely different. JSX syntax looks like HTML but its not HTML.
+JSX is purely REACT code which in turn is JS code. But the browser does not understand this JSX because it's not valid JavaScript code. This is because we're assigning an HTML tag to a variable that is not a string but just HTML code.
+So to convert it to browser understandable JavaScript code, we use a tool like Babel which is a JavaScript compiler/transpiler.
+
+**Using JSX:**
+
+```
+const myElement = <h1>I Love JSX!</h1>;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+```
+
+**Without using JSX:**
+
+```
+const myElement = React.createElement('h1', {}, 'I do not use JSX!');
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+```
+
+
+Superpowers of JSX?
+-Minimal expressions/steps to create a React element
+-Easy to write and code, just like  HTML 
+-Using JSX, you can write markup inside Javascript, providing you with a superpower to write logic and markup of a component inside a single .jsx file. JSX is easy to maintain and debug.
+
+
+https://legacy.reactjs.org/docs/jsx-in-depth.html
+
