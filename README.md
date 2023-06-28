@@ -69,6 +69,7 @@ Read about Script types in HTML
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
 
 What is JSX?
+
 JSX is Java Script syntax to create React elements with easy and in minimal steps. It is not part of React. React and JSX are different. We can build our apps using pure React as well but its quite complicated to understand and lengthy to create an element. 
 JSX is using HTML and JS together in .js file to create REACT elements. JSX and HTML are purely different. JSX syntax looks like HTML but its not HTML.
 JSX is purely REACT code which in turn is JS code. But the browser does not understand this JSX because it's not valid JavaScript code. This is because we're assigning an HTML tag to a variable that is not a string but just HTML code.
@@ -89,13 +90,32 @@ const myElement = React.createElement('h1', {}, 'I do not use JSX!');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(myElement);
 ```
-
+https://legacy.reactjs.org/docs/jsx-in-depth.html
 
 Superpowers of JSX?
+
 -Minimal expressions/steps to create a React element
 -Easy to write and code, just like  HTML 
 -Using JSX, you can write markup inside Javascript, providing you with a superpower to write logic and markup of a component inside a single .jsx file. JSX is easy to maintain and debug.
 
+Role of Type attribute in script tag of HTML? What options can we use?
 
-https://legacy.reactjs.org/docs/jsx-in-depth.html
+The type attribute specifies the type of the script. The type attribute identifies the content between the <script> and </script> tags. It has a Default value which is “text/javascript”.
+
+**type attribute can be of the following types:**
+
+text/javascript : It is the basic standard of writing javascript code inside the <script> tag.
+
+**Syntax**
+
+`<script type="text/javascript"></script>`
+
+- text/ecmascript : this value indicates that the script is following the EcmaScript standards.
+- module: This value tells the browser that the script is a module that can import or export other files or modules inside it.
+- text/babel : This value indicates that the script is a babel type and required bable to transpile it.
+- text/typescript: As the name suggest the script is written in TypeScript.
+
+
+
+
 
