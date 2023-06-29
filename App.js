@@ -1,40 +1,43 @@
-//Creating a element using React with attribute of id-heading with applies color to it
-const heading = React.createElement("h1",{id:"heading",xyz:"abc"},"Hello from React");
+//Importing React and ReactDOM
+import React from "react";
+import ReactDOM  from "react-dom/client";
 
-//Creating a root using React DOM
+//CreateElement--> JS Object--> HTML element (once rendered)
+const reactHeading = React.createElement("h1",{class:"heading"},"Hello from React");
+console.log(reactHeading);
+
+//Below JSX Code--> CreateElement of React--> JS Object--> HTML element (once rendered)
+//JSX simplies the React code to similar syntax as that of HTML
+const jsxHeading = <h1 className="heading">Hello from JSX!!</h1>
+console.log(jsxHeading);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-//Rendering the root element to the page with heading in it
-//The render function sends the "heading" h1 object and converts it into h1 html element and puts on the DOM
-root.render(heading);
+//creating a functional component using arrow functions
+const HeadingComponent = () =>{
+    return <h1>This is a heading component</h1>;
+}
+//creating a functional component using arrow functions without return statement but in ()
+const HeadingComponent1 = () =>(
+     <h1>This is a heading component1</h1>
+)
 
-//if we need to create and render nested elements
-//div parent 
-//  div  child
-//     h1 
-const parent = React.createElement("div",
-{id:"parent"},
-React.createElement("div",
-    {id:"child"},
-    React.createElement("h1",
-        {id:"h1"},
-        "Iam an h1 tag")));
+//creating a functional component using arrow functions without return statement in a single line(when theres only a single line return)
+const HeadingComponent2 = () => <h1>This is a heading component2</h1>;
 
-      //  root.render(parent);
+//To render a component use it in angular brackets <FunctionalComponentName/>
+root.render(<HeadingComponent/>);
 
-//if we need to create and render nested elements with siblings in the child, we use an array-[]
-//div parent1 
-//  div  child1
-//     h1 and h2
-const parent1 = React.createElement("div",
-{id:"parent1"},
-React.createElement("div",
-    {id:"child1"},
-   [ React.createElement("h1",
-        {id:"h1"},
-        "Iam an h1 tag"),
-        React.createElement("h2",
-        {id:"h2"},
-        "Iam an h2 tag")]));
+const Title = () =>(
+    <HeadingComponent/>,
+    <HeadingComponent1/>,
+    <HeadingComponent2/>,
+    <h1>This is a Title component</h1>
+)
+//To render a component inside a component
+root.render(<Title/>);
 
-        root.render(parent1);
+//Creating root 
+
+
+//Rendering the element to the root
+//root.render(jsxHeading);
