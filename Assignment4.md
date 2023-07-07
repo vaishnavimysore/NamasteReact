@@ -174,3 +174,10 @@ var new_arr = arr.filter(function (x){
 console.log(new_arr)
 ```
 Imp Link : https://www.freecodecamp.org/news/javascript-map-reduce-and-filter-explained-with-examples/
+
+CSS:
+Display flex : The flex property sets the flexible length on flexible items.The flex-wrap property specifies whether the flexible items should wrap or not.
+Justify Content : The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).
+
+Imp link: https://www.w3schools.com/cssref/css3_pr_flex-wrap.php
+          https://www.w3schools.com/cssref/css3_pr_justify-content.php
