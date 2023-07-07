@@ -181,3 +181,11 @@ Justify Content : The justify-content property aligns the flexible container's i
 
 Imp link: https://www.w3schools.com/cssref/css3_pr_flex-wrap.php
           https://www.w3schools.com/cssref/css3_pr_justify-content.php
+
+Join() in Javascript :
+The JavaScript Array join() Method is used to join the elements of an array into a string. The elements of the string will be separated by a specified separator and its default value is a comma(, ). Whatever way you want to seperate, that value has to be mentioned in the brackets with (" ").
+
+Syntax:
+```
+array.join(" ") or array.join(" , ")
+```
