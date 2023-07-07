@@ -193,5 +193,7 @@ array.join(" ") or array.join(" , ")
 Destructing in JS:
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
 https://exploringjs.com/es6/ch_destructuring.html
+
 https://www.w3schools.com/react/react_es6_destructuring.asp
