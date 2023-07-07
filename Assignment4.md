@@ -85,6 +85,7 @@ https://dev.to/ridhamz/the-reconciliation-algorithm-5bab
 React uses a Virtual DOM (VDOM) to perform reconciliation, which is used to compare a component’s current and previous states.
 
 8. What is React Fiber?
+   
 A:
 
 React Fiber is a completely backward-compatible rewrite of the old reconciler. This new reconciliation algorithm from React is called Fiber Reconciler. The name comes from fiber, which it uses to represent the node of the DOM tree. We will go through fiber in detail in later sections.
@@ -92,7 +93,84 @@ React Fiber is a completely backward-compatible rewrite of the old reconciler. T
 The main goals of the Fiber reconciler are incremental rendering, better or smoother rendering of UI animations and gestures, and responsiveness of the user interactions. The reconciler also allows you to divide the work into multiple chunks and divide the rendering work over multiple frames. It also adds the ability to define the priority for each unit of work and pause, reuse, and abort the work.
 
 9. Why we need keys in React? When do we need keys in React?
-10. Can we use index as keys in React?
-11. What is props in react?
-12. What is config driven UI?
-13. .map(), .reduce() and .filter()?
+    
+A :
+  “key” is a special string attribute you need to include when creating lists of elements in React. Keys are used in React to identify which items in the list are changed, updated, or deleted. In other words, we can say that keys are used to give an identity to the elements in the lists. The next thing that comes to mind is what should be good to be chosen as the key for the items in the lists. It is recommended to use a string as a key that uniquely identifies the items in the list.
+
+Keys play a great significance in React, and they help us to know what are the items in the given list of elements that have changed or are updated or removed. In simple words, the keys help in providing the identity to the elements in the Lists. Keys help to uniquely identify the elements in the Lists.
+
+10. Can we use index as keys in React?   
+A:
+   React recommends that you do not use indexes as keys, since it could impact performance negatively and could lead to some unstable component behaviour.
+   
+  Imp link:  https://articles.wesionary.team/using-index-as-a-key-is-an-anti-pattern-in-react-8e5db3aea3a9
+   
+11. What is props in react?    
+A:
+-Props are arguments passed into React components.
+-Props are passed to components via HTML attributes.
+-Props are also how you pass data from one component to another, as parameters.
+-“Props” is a special keyword in React, which stands for properties and is being used for passing data from one component to another.
+
+But the important part here is that data with props are being passed in a uni-directional flow. (one way from parent to child)
+
+Furthermore, props data is read-only, which means that data coming from the parent should not be changed by child components.
+
+Passing as HTML attributes to a functional component Car:
+```
+const myElement = <Car brand="Ford" />;
+```
+The functional component recieving it:
+
+```
+function Car(props) {
+  return <h2>I am a { props.brand }!</h2>;
+}
+```
+https://itnext.io/what-is-props-and-how-to-use-it-in-react-da307f500da0
+
+14. What is config driven UI?
+
+A:
+When we want our web application to be flexible to changes in different locations, styles etc, then we control our front end in a configuration file, This is known as config driven UI, because we can make the changes related to the styles etc in the config file without touching the code base and have the desired front end results.
+
+In a configuration-driven UI, the layout, styles, and other properties of UI elements are defined in a configuration file or database, which can be easily modified without requiring changes to the codebase. This approach makes it easier to customize the UI for different use cases or user groups, without the need for extensive coding.
+The configuration file or database may also define the data sources and the data to be displayed in the UI, as well as the interactions and behavior of the UI components. This allows for greater flexibility and adaptability of the UI to different use cases, as the configuration data can be easily modified or replaced without affecting the underlying application logic
+
+Imp Link : https://desicoder.hashnode.dev/config-driven-ui
+
+15. .map(), .reduce() and .filter()?
+
+A:
+map() method: It applies a given function on all the elements of the array and returns the updated array. It is the simpler and shorter code instead of a loop. The map is used like the following code:
+```
+function triple(n){
+    return n*3;
+}    
+arr = new Array(1, 2, 3, 6, 5, 4);
+  
+var new_arr = arr.map(triple)
+console.log(new_arr);
+```
+reduce() method: It reduces all the elements of the array to a single value by repeatedly applying a function. It is an alternative of using a loop and updating the result for every scanned element.
+
+```
+
+function product(a, b){
+    return a * b;
+}
+arr = new Array(1, 2, 3, 6, 5, 4);
+  
+var product_of_arr = arr.reduce(product)
+console.log(product_of_arr)
+```
+filter() method: It filters the elements of the array that return false for the applied condition and returns the array which contains elements that satisfy the applied condition. 
+```
+arr = new Array(1, 2, 3, 6, 5, 4);
+var new_arr = arr.filter(function (x){
+    return x % 2==0;
+});
+  
+console.log(new_arr)
+```
+Imp Link : https://www.freecodecamp.org/news/javascript-map-reduce-and-filter-explained-with-examples/
