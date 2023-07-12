@@ -9,29 +9,15 @@ import { useState } from "react";
 const Body = () => {
   const [restaurantList, SetRestaurantList] = useState(resObj);
 
-  const [seachrestaurantList, SetSearchRestaurantList] = useState("");
-
   FilterTopRestaurants = () => {
     const updatedList = restaurantList.filter((res) => res.data.avgRating > 4);
     SetRestaurantList(updatedList);
   };
-  SearchRestaurant = (event) => {
-    const searchList = restaurantList.filter(
-      (res) => (res.data.name = event.target.value)
-    );
-    SetSearchRestaurantList(searchList);
-  };
+
   return (
     <div className="Body">
       <button onClick={FilterTopRestaurants}>Top restaurants</button>
-      <input
-        type="text"
-        id="Searched Restaurants"
-        placeholder="Search Restaurants"
-        name="searchedRestaurants"
-        value={seachrestaurantList}
-      />
-      <button onClick={SearchRestaurant}>Submit</button>
+      <div className="SearchBar"> Search </div>
       <div className="res-container">
         {restaurantList.map((restaurant) => (
           <RestaurantCard key={restaurant.data.id} resData={restaurant} />
