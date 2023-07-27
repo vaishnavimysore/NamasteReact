@@ -26,7 +26,9 @@ const Body = () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4862501&lng=78.498635&page_type=DESKTOP_WEB_LISTING"
     );
-    const jsonData = await data.json();
+    const jsonData = await data.json().catch(function (err) {
+      console.log(err.message);
+    });
     const apiData = jsonData?.data?.cards[2]?.data?.data?.cards;
     SetRestaurantList(apiData);
     SetFilteredList(apiData);
