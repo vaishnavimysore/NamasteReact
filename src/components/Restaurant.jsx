@@ -1,4 +1,4 @@
-import CDN_URL from "../utils/constants.js";
+import { CDN_URL } from "../utils/constants.js";
 
 //Fucntional component for the Restaurant Card which is part of the body
 //Res-card dets and res-img are contained in the res-card.
@@ -7,7 +7,7 @@ import CDN_URL from "../utils/constants.js";
 const RestaurantCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, deliveryTime } =
-    resData?.data;
+    resData?.info;
 
   return (
     <div className="res-card">

@@ -14,7 +14,7 @@ const Body = () => {
   const [filteredList, SetFilteredList] = useState([]);
 
   FilterTopRestaurants = () => {
-    const updatedList = restaurantList.filter((res) => res.data.avgRating > 4);
+    const updatedList = restaurantList.filter((res) => res.info.avgRating > 4);
     SetFilteredList(updatedList);
   };
 
@@ -24,12 +24,14 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4862501&lng=78.498635&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4862501&lng=78.498635&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const jsonData = await data.json().catch(function (err) {
       console.log(err.message);
     });
-    const apiData = jsonData?.data?.cards[2]?.data?.data?.cards;
+    const apiData =
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
     SetRestaurantList(apiData);
     SetFilteredList(apiData);
   };
@@ -51,7 +53,7 @@ const Body = () => {
           <button
             onClick={() => {
               const searchedList = restaurantList.filter((res) => {
-                return res.data.name
+                return res.info.name
                   .toLowerCase()
                   .includes(searchList.toLowerCase());
               });
@@ -65,7 +67,7 @@ const Body = () => {
         <button onClick={FilterTopRestaurants}>Top restaurants</button>
         <div className="res-container">
           {filteredList.map((restaurant) => (
-            <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
           ))}
         </div>
       </div>
