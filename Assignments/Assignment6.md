@@ -99,3 +99,74 @@ It eliminates surprises and confusion by showing a consistent and predictable UI
 It enhances the aesthetic appeal and user satisfaction by creating a smooth and elegant transition from loading to loaded.
 
 8. What is the difference between JS expression and JS statement?
+
+A: At its simplest terms, expressions are evaluated to produce a value. On the other hand, statements are executed to make something happen.
+Expression: a unit of code that resolves to a value, as instance, literals & operators. Examples for expressions:
+Statement: a unit of code representing one instruction or more, usually starts with a language reserved keyword and ends, explicitly or implicitly, with a statement terminator. 
+
+Important Link : https://medium.com/launch-school/javascript-expressions-and-statements-4d32ac9c0e74
+
+9. What is conditional rendering? Explain with an example.
+
+A: Conditional rendering in simple terms is rendering a component or a page(group of components) depending upon a condition. We can use 'if', '&&'
+or ternary operator '?' for doing conditional rendering of components. 
+
+For example: 
+```
+if(ListOfRestaurants === null) return <ShimmerUI/>
+
+ListOfRestaurants.length > 0 && <ShimmerUI/>
+
+ListofRestaurants === 0 ? <ShimmerUI/> : <Body/>
+
+```
+10. What is CORS?
+
+A: CORS is Cross Origin Resource Sharing. Cross-origin resource sharing (CORS) is a browser mechanism which enables controlled access to resources located outside of a given domain. It is for integrating applications. CORS defines a way for client web applications that are loaded in one domain to interact with resources in a different domain. This is useful because complex applications often reference third-party APIs and resources in their client-side code. For example, your application may use your browser to pull videos from a video platform API, use fonts from a public font library, or display weather data from a national weather database. CORS allows the client browser to check with the third-party servers if the request is authorized before any data transfers.
+
+Remember, the same-origin policy tells the browser to block cross-origin requests. When you want to get a public resource from a different origin, the resource-providing server needs to tell the browser "This origin where the request is coming from can access my resource". The browser remembers that and allows cross-origin resource sharing.
+
+Important Links : https://web.dev/cross-origin-resource-sharing/
+                  https://reflectoring.io/complete-guide-to-cors/
+                  
+
+11. What is async and await? - "Running concurrently but waits for result"
+     
+A: Asynchronous functions are those functions which are going to take a certain amount of time to complete or respond and are not going to block the flow of execution as they are run concurrently without waiting for this task to complete.
+
+Asynchronous is a non-blocking architecture, so the execution of one task isn’t dependent on another. Tasks can run simultaneously.
+
+Synchronous is a blocking architecture, so the execution of each operation is dependent on the completion of the one before it. Each task requires an answer before moving on to the next iteration.
+
+The differences between asynchronous and synchronous include:
+
+Async is multi-thread, which means operations or programs can run in parallel.
+Sync is single-thread, so only one operation or program will run at a time.
+Async is non-blocking, which means it will send multiple requests to a server.
+Sync is blocking — it will only send the server one request at a time and will wait for that request to be answered by the server.
+Async increases throughput because multiple operations can run at the same time.
+Sync is slower and more methodical.
+
+Programmers can write asynchronous code more synchronously using JavaScript’s async/await syntax feature. It is based on Promise and offers a cleaner, more legible approach to construct asynchronous programmes.
+
+When a function is marked with the “async” prefix, it means that it will always return a Promise. The “await” keyword is used to halt the execution of the programme inside an async function until the Promise is fulfilled.
+
+Example:
+```
+  const fetchData = async () => {
+    const data = await fetch(RESTAURANT_API);
+    const jsonData = await data.json()}
+```
+Here the  anonymous function is given the keyword "async" to mark the function as asynchronous(running concurrently) and also that it'll be returning a promise. We use the "await" keyword for fetch operation so that it can halt the further operation until the promise is resolved and fulfilled(Note: fetch() and json() return a promise).
+
+Important Links: https://blog.bitsrc.io/async-await-in-javascript-simplifying-asynchronous-code-39075ea4cd03
+                  https://blog.bitsrc.io/what-is-javascript-promise-and-why-it-is-important-4b6676d3016a
+
+12. What is the use of const jsonData = await data.json() in fetchData() ?
+
+```
+  const fetchData = async () => {
+    const data = await fetch(RESTAURANT_API);
+    const jsonData = await data.json()}
+```
+Here We use the "await" keyword for json() so that it can halt the further operation until the whole data is converted into json(This is asynchronous) . (Note: json() returns a promise).
