@@ -6,14 +6,14 @@ import { CDN_URL } from "../utils/constants.js";
 //To reuse the Restaurant car component with multiple values we use props, destructure it and use the properties of it with {}'s
 const RestaurantCard = (props) => {
   const { resData } = props;
-  const { cloudinaryImageId, name, cuisines, avgRating, deliveryTime } =
-    resData?.info;
-
+  const { cloudinaryImageId, name, cuisines, avgRating } = resData?.info;
+  const { deliveryTime } = resData?.info.sla;
   return (
     <div className="res-card">
       <div className="res-card-dets">
         <img className="res-img" src={CDN_URL + cloudinaryImageId}></img>
         <h3>{name}</h3>
+        <hr></hr>
         <p>{cuisines.join(", ")} </p>
         <p>{avgRating} stars</p>
         <p>{deliveryTime} minutes</p>

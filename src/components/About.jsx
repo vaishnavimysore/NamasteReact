@@ -1,5 +1,7 @@
+import User from "./User";
+
 const About = () => {
-  return <h1>You are in About Page</h1>;
+  return <User data={"Hello"} />;
 };
 
 export default About;

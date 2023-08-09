@@ -1,42 +1,21 @@
 import RestaurantCard from "./Restaurant";
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
+import useResData from "../utils/useResData";
+import useOnlineStatus from "../utils/useOnlineStatus";
 //Fucntional component for Body part of our app which contains Restaurant container, Restaurant cards and seach bar
 //The res-container is the whole place where all the cards will be placed. The map function is used over the resObj which will iterate for all values of the list where "restaurant "
 //is the function arguement which returns the Restuarant card component with particular resData and key.
 
 const Body = () => {
-  const [restaurantList, SetRestaurantList] = useState([]);
+  const filteredList = useResData();
+  const onlineStatus = useOnlineStatus();
 
-  const [searchList, SearchedListUpdate] = useState([]);
+  if (onlineStatus === false) {
+    return <h1>You're Offline!! Please check your connection!! </h1>;
+  }
 
-  const [filteredList, SetFilteredList] = useState([]);
-
-  FilterTopRestaurants = () => {
-    const updatedList = restaurantList.filter((res) => res.info.avgRating > 4);
-    SetFilteredList(updatedList);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4862501&lng=78.498635&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const jsonData = await data.json().catch(function (err) {
-      console.log(err.message);
-    });
-    const apiData =
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    SetRestaurantList(apiData);
-    SetFilteredList(apiData);
-  };
-
-  if (restaurantList.length === 0) {
+  if (filteredList.length === 0) {
     return <Shimmer />;
   }
   return (
@@ -57,7 +36,6 @@ const Body = () => {
                   .toLowerCase()
                   .includes(searchList.toLowerCase());
               });
-              console.log(searchedList);
               SetFilteredList(searchedList);
             }}
           >
@@ -67,7 +45,12 @@ const Body = () => {
         <button onClick={FilterTopRestaurants}>Top restaurants</button>
         <div className="res-container">
           {filteredList.map((restaurant) => (
-            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+            <Link
+              style={{ textDecoration: "none", color: "black" }}
+              to={"/restaurants/" + restaurant.info.id}
+            >
+              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+            </Link>
           ))}
         </div>
       </div>

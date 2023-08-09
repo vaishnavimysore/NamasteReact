@@ -46,6 +46,7 @@ heading {
 
 .res-card-dets {
   padding: 2px 8px;
+  line-height: 22px;
 }
 
 .res-img {
@@ -77,4 +78,42 @@ heading {
   font-size: 20px;
   color: cadetblue;
   font-family: cursive;
+}
+
+hr {
+  border-style: solid;
+  color: lightgray;
+}
+
+.menu-container {
+  margin: 50px 300px;
+  line-height: 30px;
+  width: 700px;
+}
+
+.Collapsible__trigger {
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  display: block;
+  height: 50px;
+  line-height: 4rem;
+  padding-left: 3rem;
+  background-color: lightgray;
+}
+
+.items-img {
+  height: 150px;
+  width: 130px;
+  float: right;
+}
+
+.items-container {
+  height: 200px;
+  width: 700px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
 }
