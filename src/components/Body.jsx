@@ -1,4 +1,4 @@
-import RestaurantCard from "./Restaurant";
+import RestaurantCard, { withPromotedLabel } from "./Restaurant";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useResData from "../utils/useResData";
@@ -14,6 +14,7 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   const [searchList, SearchedListUpdate] = useState([]);
   const [restaurantList, SetRestaurantList] = useState([]);
+  const PromotedLabel = withPromotedLabel(RestaurantCard);
 
   FilterTopRestaurants = () => {
     const updatedList = restaurantList.filter((res) => res.info.avgRating > 4);
@@ -85,7 +86,14 @@ const Body = () => {
               style={{ textDecoration: "none", color: "black" }}
               to={"/restaurants/" + restaurant.info.id}
             >
-              <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+              {restaurant?.info?.aggregatedDiscountInfoV3?.header ? (
+                <PromotedLabel resData={restaurant} />
+              ) : (
+                <RestaurantCard
+                  key={restaurant?.info?.id}
+                  resData={restaurant}
+                />
+              )}
             </Link>
           ))}
         </div>
