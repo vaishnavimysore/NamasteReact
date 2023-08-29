@@ -4,8 +4,6 @@ import { RESTAURANT_API } from "./constants";
 const useResData = () => {
   const [restaurantList, SetRestaurantList] = useState([]);
 
-  const [searchList, SearchedListUpdate] = useState([]);
-
   const [filteredList, SetFilteredList] = useState([]);
 
   FilterTopRestaurants = () => {
@@ -22,7 +20,7 @@ const useResData = () => {
       const data = await fetch(RESTAURANT_API);
       const jsonData = await data.json();
       const apiData =
-        jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
       console.log(apiData);
       SetRestaurantList(apiData);
@@ -31,7 +29,7 @@ const useResData = () => {
       console.log(error.message);
     }
   };
-  return filteredList;
+  return [filteredList, SetFilteredList];
 };
 
 export default useResData;
