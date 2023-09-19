@@ -9,12 +9,17 @@ import { RESTAURANT_API } from "../utils/constants";
 //The res-container is the whole place where all the cards will be placed. The map function is used over the resObj which will iterate for all values of the list where "restaurant "
 //is the function arguement which returns the Restuarant card component with particular resData and key.
 
+//To use context variables and the controlling functions of context variables, we import useContext and the file containing the context variable
+import { useContext } from "react";
+import userContext from "../utils/UserContext";
+
 const Body = () => {
   const [filteredList, SetFilteredList] = useState([]);
   const onlineStatus = useOnlineStatus();
   const [searchList, SearchedListUpdate] = useState([]);
   const [restaurantList, SetRestaurantList] = useState([]);
   const PromotedLabel = withPromotedLabel(RestaurantCard);
+  const { loggedInUser, setUserName } = useContext(userContext);
 
   FilterTopRestaurants = () => {
     const updatedList = restaurantList.filter((res) => res.info.avgRating > 4);
@@ -59,6 +64,14 @@ const Body = () => {
               SearchedListUpdate(e.target.value);
             }}
           />
+          {/*Here an input is taken and this value is updated to the context variable using the state function, provided the component is 
+          wrapped with <.Provider> component. With this setUserName func we alter the context variable whenever the userName changes */}
+          <input
+            className="relative ml-72 -mr-0.5 block w-[400px] min-w-0 rounded-l border border-solid border-gray-50 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+
           <button
             className="relative z-[2] rounded-md border-2 border-primary bg-red-50 px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
             onClick={() => {
