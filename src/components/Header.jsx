@@ -1,10 +1,13 @@
 import imgLogo from "../../images/foodDeliveryLogo.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import userContext from "../utils/UserContext";
 
 //Fucntional component for Header part of our app which contains Logo, Nav items etc
 const Header = () => {
   const [btnName, btnNameUpdate] = useState("Login");
+
+  const userInfo = useContext(userContext);
 
   return (
     <div className="mb-10 flex bg-white shadow-lg  w-full h-20">
@@ -31,8 +34,8 @@ const Header = () => {
             className=" bg-red-200 rounded-sm w-16 h-8 text-red-700"
             onClick={() => {
               btnName === "Login"
-                ? btnNameUpdate("Logout")
-                : btnNameUpdate("Login");
+                ? btnNameUpdate(userInfo.loggedInUser)
+                : btnNameUpdate("Logout");
             }}
           >
             {btnName}

@@ -1,5 +1,6 @@
 import React from "react";
 import { json } from "react-router-dom";
+import userContext from "../utils/UserContext";
 
 class User extends React.Component {
   constructor(props) {
@@ -34,9 +35,18 @@ class User extends React.Component {
           ></img>
         </div>
         <div className="mt-6 flex-col justify-start p-8">
-          <h1 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-            Name : {this.state.login}
-          </h1>
+          {/* To use the context variables in class based components, we have to use VarName.Consumer component wrapped with a callback fn 
+        which recieves the context data and returns a jsx with it
+         */}
+
+          <userContext.Consumer>
+            {(data) => (
+              <h1 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                Name : {data.loggedInUser}
+              </h1>
+            )}
+          </userContext.Consumer>
+
           <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
             ID : {this.state.id}
           </p>
