@@ -36,7 +36,7 @@ const App = () => {
         We can also control the loggedInUser variable with a state variable and updating it with the update func respective to that
         variable*/}
 
-      <userContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <userContext.Provider value={{ setUserName }}>
         <Header />
 
         <Outlet />
