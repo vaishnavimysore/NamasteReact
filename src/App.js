@@ -8,12 +8,15 @@ import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+import Cart from "./components/Cart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Login from "./components/Login";
 import { lazy, Suspense } from "react";
 import Shimmer from "./components/Shimmer";
 import userContext from "./utils/UserContext";
+import { Provider } from "react-redux"; //Provider is imported to allocating/providing the store to our application
+import appStore from "./utils/appStore"; //This is imported to pass the appStore config to the application
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -30,17 +33,19 @@ const App = () => {
 
   return (
     <div className="bg-gradient-to-b from-red-100  to-red-300  w-screen  min-h-screen ">
-      {/*To provide or assign a value to the context variables, we use VarName.Provider component and pass in the new value
+      {/*Provider component of redux is used for providing the data to other pages and components to be provided are wrapped in it */}
+      <Provider store={appStore}>
+        {/*To provide or assign a value to the context variables, we use VarName.Provider component and pass in the new value
         to the variable. We then wrap the component where this new value has to be visible. Ex: Here the loggedInUser is Vaishnavi
         only for Header component and else where it is still Default user.
         We can also control the loggedInUser variable with a state variable and updating it with the update func respective to that
         variable*/}
+        <userContext.Provider value={{ setUserName }}>
+          <Header />
 
-      <userContext.Provider value={{ setUserName }}>
-        <Header />
-
-        <Outlet />
-      </userContext.Provider>
+          <Outlet />
+        </userContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -70,6 +75,7 @@ const appRouter = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+
       {
         path: "/grocery",
         element: (
@@ -77,6 +83,10 @@ const appRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
